@@ -1,0 +1,519 @@
+:root{
+  --bg-main:#000000;
+  --bg-panel:#000000;
+
+  --border-soft:rgba(98,168,255,.14);
+
+  --text-main:#8bbcff;
+  --text-muted:#6e97c9;
+
+  --accent-blue:#62a8ff;
+  --neon-blue:#7fd2ff;
+
+  --font-main:Consolas,monospace;
+  --font-intro:system-ui,Segoe UI,Arial;
+}
+
+/* Ensure full viewport coverage + AoRE cursor everywhere */
+
+html{
+  height:100%;
+  background:var(--bg-main);
+  cursor:url("/assets/cursor/aore_cursor.png") 0 0, default;
+}
+
+body{
+  min-height:100vh;
+  margin:0;
+  padding:0;
+  background:var(--bg-main);
+  color:var(--text-main);
+  font-family:var(--font-main);
+  cursor:url("/assets/cursor/aore_cursor.png") 0 0, default;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+h1,h2,p{margin:0;}
+
+
+/* ============================= */
+/* HERO (Banner) */
+/* ============================= */
+
+.hero{
+  width:100%;
+  max-width:1920px;
+  margin:0 auto;
+  overflow:hidden;
+}
+
+.hero-banner{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
+
+.hero-text{display:none;}
+
+/* ============================= */
+/* Base sections + footer */
+/* ============================= */
+
+section{
+  padding:0;
+  border-bottom:1px solid var(--border-soft);
+}
+
+footer{
+  text-align:center;
+  padding:34px 20px;
+  border-top:1px solid var(--border-soft);
+  background:#000;
+  opacity:.7;
+}
+
+footer p{
+  color:var(--text-muted);
+  font-family:var(--font-main);
+}
+
+/* ============================= */
+/* AoRE Auth Buttons (final - no duplicates) */
+/* ============================= */
+
+.auth-bar{
+  position:fixed;
+  top:16px;
+  right:20px;
+  z-index:1000;
+  display:flex;
+  gap:8px;
+}
+
+.auth-btn{
+  background:rgba(5,15,25,.85);
+  border:1px solid #1b3b5a;
+  color:#7aa2ff;
+  padding:6px 12px;
+  font-size:12px;
+  font-family:system-ui,Segoe UI,Arial;
+  border-radius:6px;
+  opacity:.7;
+  transition:all .2s ease;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  cursor:pointer;
+}
+
+.auth-btn:hover{
+  opacity:1;
+}
+/* AoRE global cursor */
+
+body{
+  cursor:url("/assets/cursor/aore_cursor.png") 0 0, default;
+}
+
+a, button, input, textarea, select, label{
+  cursor:url("/assets/cursor/aore_cursor.png") 0 0, pointer;
+}
+
+/* AoRE custom cursor (real) */
+.auth-btn.auth-register{
+  cursor:url("/assets/cursor/aore_cursor.png") 0 0, pointer;
+}
+
+.auth-btn.auth-register:hover{
+  cursor:url("/assets/cursor/aore_cursor.png") 0 0, pointer;
+  color:#9fc4ff;
+  border-color:#3a78b4;
+  box-shadow:0 0 12px rgba(98,168,255,0.4);
+}
+
+/* ============================= */
+/* AoRE Cards (for internal pages like /register) */
+/* ============================= */
+
+.aore-card{
+  border:1px solid var(--border-soft);
+  border-radius:16px;
+  background:rgba(0,0,0,.55);
+  padding:16px 16px;
+}
+
+.aore-card-title{
+  color:rgba(127,210,255,.92);
+  font-weight:900;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  margin:0 0 8px 0;
+}
+
+.aore-card-sub{
+  color:rgba(139,188,255,.86);
+  line-height:1.7;
+}
+
+/* ============================= */
+/* AoRE Landing - VMProtect layout (AoRE neon) */
+/* ============================= */
+
+.aore-wrap{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 22px;
+}
+
+.aore-hero{
+  padding:34px 0 18px 0;
+  border-bottom:1px solid var(--border-soft);
+  background:#000;
+}
+
+.aore-hero-inner{
+  max-width:980px;
+  margin:0 auto;
+  text-align:center;
+}
+
+.aore-eyebrow{
+  margin:0 0 12px 0;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+  font-weight:800;
+  opacity:.92;
+  color:var(--accent-blue);
+  font-size:.98rem;
+}
+
+.aore-intro{
+  font-family:var(--font-intro);
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:rgba(98,168,255,.86);
+  font-size:1.78rem;
+  line-height:1.2;
+  margin:0 0 14px 0;
+}
+
+.aore-lead{
+  margin:0 auto;
+  max-width:900px;
+  line-height:1.75;
+  color:rgba(139,188,255,.88);
+  font-size:1.06rem;
+  opacity:.95;
+}
+
+.neon{
+  color:var(--neon-blue);
+  text-shadow:
+    0 0 10px rgba(127,210,255,.22),
+    0 0 22px rgba(127,210,255,.16);
+}
+
+/* Sections */
+
+.aore-section{
+  padding:24px 0;
+  background:#000;
+}
+
+.aore-section.alt{
+  background:#000;
+  border-top:1px solid rgba(98,168,255,.08);
+  border-bottom:1px solid rgba(98,168,255,.08);
+}
+
+.aore-split{
+  display:grid;
+  grid-template-columns:1.05fr 1fr;
+  gap:18px;
+  align-items:center;
+}
+
+.aore-section.alt .aore-split{
+  grid-template-columns:1fr 1.05fr;
+}
+
+.aore-copy h2{
+  margin:0 0 8px 0;
+  color:var(--accent-blue);
+  font-size:1.25rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-family:var(--font-main);
+}
+
+.aore-sub{
+  margin:0 0 12px 0;
+  color:rgba(139,188,255,.86);
+  line-height:1.7;
+}
+
+/* Features - no numbers */
+
+.aore-feature{
+  display:block;
+  padding:12px 12px;
+  border:1px solid var(--border-soft);
+  border-radius:14px;
+  background:rgba(0,0,0,.55);
+  margin-top:10px;
+}
+
+.aore-ft{
+  font-weight:900;
+  letter-spacing:.02em;
+  color:rgba(127,210,255,.92);
+  text-shadow:0 0 10px rgba(127,210,255,.10);
+}
+
+.aore-fd{
+  margin-top:6px;
+  color:rgba(139,188,255,.84);
+  line-height:1.6;
+}
+
+/* Media (logos) */
+
+.aore-media{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:300px;
+  position:relative;
+}
+
+.aore-media:before{
+  content:"";
+  position:absolute;
+  width:min(420px, 92%);
+  height:240px;
+  border-radius:22px;
+  border:1px solid rgba(98,168,255,.14);
+  background:radial-gradient(120% 90% at 20% 15%, rgba(98,168,255,.10), transparent 58%);
+  box-shadow:0 20px 70px rgba(0,0,0,.55);
+}
+
+.aore-icon{
+  width:180px;
+  height:180px;
+  object-fit:contain;
+  opacity:.82;
+  filter:drop-shadow(0 0 16px rgba(127,210,255,.12));
+  position:relative;
+  z-index:1;
+}
+
+.aore-final-note{
+  padding:14px 14px;
+  border-radius:16px;
+  border:1px solid rgba(127,210,255,.22);
+  background:rgba(0,0,0,.65);
+  color:rgba(127,210,255,.92);
+  text-shadow:
+    0 0 12px rgba(127,210,255,.18),
+    0 0 26px rgba(127,210,255,.10);
+  font-size:1.02rem;
+  line-height:1.65;
+}
+
+/* Responsive */
+
+@media (max-width:980px){
+  .aore-hero{ padding:30px 0 16px 0; }
+  .aore-intro{ font-size:1.45rem; letter-spacing:.11em; }
+  .aore-lead{ font-size:1.02rem; line-height:1.75; }
+
+  .aore-media{ min-height:260px; }
+  .aore-media:before{
+    height:210px;
+    border-radius:20px;
+  }
+  .aore-icon{
+    width:150px;
+    height:150px;
+  }
+
+  .aore-section{ padding:22px 0; }
+}
+
+@media (max-width:560px){
+  .aore-hero{ padding:26px 0 14px 0; }
+  .aore-eyebrow{ font-size:.92rem; }
+  .aore-intro{ font-size:1.18rem; letter-spacing:.10em; }
+  .aore-lead{ font-size:.98rem; line-height:1.8; }
+
+  .aore-media{ min-height:240px; }
+  .aore-media:before{
+    width:min(360px, 92%);
+    height:190px;
+    border-radius:18px;
+  }
+  .aore-icon{
+    width:120px;
+    height:120px;
+  }
+
+  .aore-copy h2{ font-size:1.12rem; }
+  .aore-sub{ font-size:.98rem; }
+}
+
+@media (min-width:1400px){
+  .aore-hero-inner{ max-width:1080px; }
+  .aore-intro{ font-size:2.05rem; }
+  .aore-lead{ font-size:1.12rem; }
+
+  .aore-media{ min-height:340px; }
+  .aore-media:before{ height:270px; }
+  .aore-icon{ width:200px; height:200px; }
+
+  .aore-section{ padding:28px 0; }
+}
+
+/* ============================= */
+/* AoRE Register Form */
+/* ============================= */
+
+.aore-form-card{
+  margin-top:10px;
+}
+
+.aore-form{
+  margin-top:14px;
+}
+
+.aore-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:12px;
+}
+
+.aore-field{
+  margin-top:12px;
+}
+
+.aore-field label{
+  display:block;
+  font-family:var(--font-main);
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  font-size:.78rem;
+  color:rgba(127,210,255,.92);
+  margin:0 0 8px 0;
+}
+
+.aore-field input,
+.aore-field textarea{
+  width:100%;
+  border:1px solid rgba(98,168,255,.18);
+  background:rgba(0,0,0,.55);
+  color:rgba(139,188,255,.92);
+  border-radius:12px;
+  padding:10px 12px;
+  outline:none;
+  font-family:var(--font-main);
+}
+
+.aore-field textarea{
+  resize:none;
+  height:180px;
+}
+
+
+.aore-field input:focus,
+.aore-field textarea:focus{
+  border-color:rgba(127,210,255,.45);
+  box-shadow:0 0 0 3px rgba(98,168,255,.12);
+}
+
+.aore-hint{
+  margin-top:8px;
+  color:rgba(139,188,255,.70);
+  font-size:.86rem;
+  line-height:1.5;
+}
+
+.aore-form-error{
+  margin-top:12px;
+  min-height:18px;
+  color:rgba(255,120,120,.92);
+  font-family:var(--font-intro);
+  letter-spacing:.03em;
+}
+
+.aore-actions{
+  margin-top:16px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.aore-btn{
+  border:1px solid rgba(98,168,255,.28);
+  background:rgba(5,15,25,.85);
+  color:#9fc4ff;
+  padding:10px 14px;
+  border-radius:12px;
+  font-family:var(--font-main);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:all .2s ease;
+}
+
+.aore-btn:hover{
+  border-color:rgba(127,210,255,.55);
+  box-shadow:0 0 14px rgba(98,168,255,.20);
+}
+
+.aore-link{
+  color:rgba(127,210,255,.85);
+  text-decoration:none;
+  font-family:var(--font-main);
+}
+
+.aore-link:hover{
+  color:rgba(127,210,255,.98);
+  text-decoration:underline;
+}
+
+.aore-footnote{
+  margin-top:14px;
+  opacity:.85;
+}
+
+@media (max-width:760px){
+  .aore-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* ============================= */
+/* AoRE Cursor - Global hard force */
+/* ============================= */
+
+html, body, *{
+  cursor:url("/assets/cursor/aore_cursor.png") 0 0, default !important;
+}
+
+a, button, input, textarea, select, label, .auth-btn, .aore-btn{
+  cursor:url("/assets/cursor/aore_cursor.png") 0 0, pointer !important;
+}
+
+input[type="text"], input[type="email"], input[type="password"], textarea{
+  cursor:url("/assets/cursor/aore_cursor.png") 0 0, text !important;
+}
+
+.auth-btn{
+  text-decoration:none !important;
+}
+
