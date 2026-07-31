@@ -516,4 +516,31 @@ input[type="text"], input[type="email"], input[type="password"], textarea{
 .auth-btn{
   text-decoration:none !important;
 }
+/* ========================================= */
+/* OVERRIDE: AoRE Research Icon (IDA Pro)    */
+/* ========================================= */
+
+.icon-custom-research {
+  width: 100% !important;
+  max-width: 320px !important; /* Aumentamos drásticamente el tamaño máximo */
+  height: auto !important;     /* Mantiene el Aspect Ratio (cuadrado o retrato) */
+  object-fit: contain !important;
+  border-radius: 12px;
+  /* Le damos un drop-shadow un poco más intenso para que resalte más */
+  filter: drop-shadow(0 0 25px rgba(98,168,255,0.25)) !important; 
+  z-index: 5;
+}
+
+/* Ajustes para que también quede impecable y más grande en móviles */
+@media (max-width: 980px) {
+  .icon-custom-research {
+    max-width: 240px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .icon-custom-research {
+    max-width: 200px !important;
+  }
+}
 
