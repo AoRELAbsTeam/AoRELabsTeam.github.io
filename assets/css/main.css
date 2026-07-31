@@ -521,26 +521,26 @@ input[type="text"], input[type="email"], input[type="password"], textarea{
 /* ========================================= */
 
 .icon-custom-research {
-  width: 100% !important;
-  max-width: 320px !important; /* Aumentamos drásticamente el tamaño máximo */
-  height: auto !important;     /* Mantiene el Aspect Ratio (cuadrado o retrato) */
+  width: auto !important;
+  height: 100% !important;
+  max-height: 220px !important; /* Forzamos a que respete el alto de la caja de fondo */
   object-fit: contain !important;
   border-radius: 12px;
-  /* Le damos un drop-shadow un poco más intenso para que resalte más */
   filter: drop-shadow(0 0 25px rgba(98,168,255,0.25)) !important; 
   z-index: 5;
 }
 
-/* Ajustes para que también quede impecable y más grande en móviles */
-@media (max-width: 980px) {
+/* Ajuste fino para monitores grandes donde la caja es de 270px */
+@media (min-width: 1400px) {
   .icon-custom-research {
-    max-width: 240px !important;
+    max-height: 250px !important; 
   }
 }
 
+/* Ajuste fino para móviles donde la caja es más bajita */
 @media (max-width: 560px) {
   .icon-custom-research {
-    max-width: 200px !important;
+    max-height: 170px !important;
   }
 }
 
