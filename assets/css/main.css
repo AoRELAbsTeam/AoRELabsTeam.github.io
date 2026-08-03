@@ -543,4 +543,70 @@ input[type="text"], input[type="email"], input[type="password"], textarea{
     max-height: 170px !important;
   }
 }
+/* ============================= */
+/* AoRE NFO INTRO ANIMATION      */
+/* ============================= */
 
+#aore-intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-main);
+  color: var(--accent-blue);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-main);
+  /* El cursor personalizado también aquí por si acaso */
+  cursor: url("/assets/cursor/aore_cursor.png") 0 0, default !important;
+}
+
+.ascii-art {
+  white-space: pre;
+  font-size: clamp(0.6rem, 1.5vw, 1.2rem); /* Responsive para móviles y 4K */
+  font-weight: bold;
+  text-align: left;
+  text-shadow: 0 0 10px rgba(127,210,255,0.4);
+  line-height: 1.2;
+}
+
+.scanner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--neon-blue);
+  box-shadow: 0 0 15px var(--neon-blue), 0 0 30px var(--accent-blue);
+  opacity: 0; /* Oculto hasta que arranca la animación */
+  z-index: 10000;
+}
+
+/* Clases de estado controladas por JS */
+.intro-active {
+  overflow: hidden; /* Evita que el usuario haga scroll mientras carga */
+}
+
+.intro-animating #aore-intro-overlay {
+  /* clip-path esconde la capa de arriba a abajo */
+  animation: scanReveal 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.intro-animating .scanner-line {
+  animation: scanLine 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes scanReveal {
+  0% { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(100% 0 0 0); } /* Revela la web de golpe */
+}
+
+@keyframes scanLine {
+  0% { top: 0; opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; } /* El láser cae y desaparece */
+}
