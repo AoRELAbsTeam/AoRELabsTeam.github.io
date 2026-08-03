@@ -544,118 +544,55 @@ input[type="text"], input[type="email"], input[type="password"], textarea{
   }
 }
 /* ============================= */
-/* SCENE INTRO (CODEX / ORION)   */
+/* 2K SCENE INTRO (UNIVERSE)     */
 /* ============================= */
 
 #scene-intro {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: #000;
-  z-index: 99999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  /* Fuerza el cursor custom tuyo */
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: #000; z-index: 99999;
   cursor: url("/assets/cursor/aore_cursor.png") 0 0, default !important;
+  overflow: hidden;
 }
 
-.scene-terminal {
-  text-align: center;
-  position: relative;
+#intro-canvas {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1;
 }
 
-/* --- GLITCH LOGO EFFECT --- */
-.glitch-wrapper {
-  margin-bottom: 20px;
+.intro-text-layer {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  display: flex; justify-content: center; align-items: center;
+  z-index: 2; pointer-events: none;
 }
 
-.glitch-logo {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+.intro-message {
   font-family: var(--font-intro);
   font-weight: 900;
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: #fff;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--text-main);
-  position: relative;
-  text-shadow: 0 0 15px var(--accent-blue);
-  animation: glitch-skew 1s infinite linear alternate-reverse;
+  letter-spacing: 0.1em;
+  text-align: center;
+  /* Destello brutal estilo Scene */
+  text-shadow: 0 0 15px #fff, 0 0 40px var(--neon-blue), 0 0 80px var(--accent-blue);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.2s ease-out, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.glitch-logo::before,
-.glitch-logo::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  opacity: 0.8;
-}
-
-.glitch-logo::before {
-  color: #ff003c; /* Red glitch */
-  z-index: -1;
-  left: 2px;
-  animation: glitch-anim 2.5s infinite linear alternate-reverse;
-}
-
-.glitch-logo::after {
-  color: #00ffff; /* Cyan glitch */
-  z-index: -2;
-  left: -2px;
-  animation: glitch-anim2 3s infinite linear alternate-reverse;
-}
-
-/* --- CONSOLE TEXT --- */
-.scene-console {
-  font-family: var(--font-main);
-  color: var(--neon-blue);
-  font-size: 0.9rem;
-  line-height: 1.5;
-  text-align: left;
-  min-height: 80px;
-  opacity: 0.8;
-  text-shadow: 0 0 8px rgba(127,210,255,0.5);
+.intro-message.show {
+  opacity: 1;
+  transform: scale(1.1); /* Impacto hacia el usuario */
 }
 
 /* --- THE FINAL FLASH --- */
 .flash-bang {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: #fff;
-  z-index: 100000;
-  opacity: 0;
-  pointer-events: none;
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: #fff; z-index: 100000; opacity: 0; pointer-events: none;
 }
 
 .flash-bang.boom {
-  animation: whiteOut 0.8s ease-out forwards;
-}
-
-/* --- KEYFRAMES --- */
-@keyframes glitch-skew {
-  0% { transform: skew(0deg); }
-  20% { transform: skew(-5deg); }
-  40% { transform: skew(5deg); }
-  60% { transform: skew(-2deg); }
-  80% { transform: skew(2deg); }
-  100% { transform: skew(0deg); }
-}
-
-@keyframes glitch-anim {
-  0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 1px); }
-  20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); }
-  40% { clip-path: inset(40% 0 50% 0); transform: translate(-2px, 2px); }
-  60% { clip-path: inset(80% 0 5% 0); transform: translate(2px, -2px); }
-  80% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 1px); }
-  100% { clip-path: inset(30% 0 50% 0); transform: translate(1px, -1px); }
-}
-
-@keyframes glitch-anim2 {
-  0% { clip-path: inset(10% 0 60% 0); transform: translate(2px, -1px); }
-  20% { clip-path: inset(30% 0 20% 0); transform: translate(-2px, 1px); }
-  40% { clip-path: inset(70% 0 10% 0); transform: translate(2px, -2px); }
-  60% { clip-path: inset(20% 0 50% 0); transform: translate(-2px, 2px); }
-  80% { clip-path: inset(50% 0 30% 0); transform: translate(1px, -1px); }
-  100% { clip-path: inset(5% 0 80% 0); transform: translate(-1px, 1px); }
+  animation: whiteOut 0.9s ease-out forwards;
 }
 
 @keyframes whiteOut {
