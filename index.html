@@ -183,5 +183,42 @@
     <p>© AoRE Labs 2006-2026</p>
   </footer>
 
+ <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const overlay = document.getElementById('aore-intro-overlay');
+      
+      // Comprobamos si es la primera vez que entra (flag en localStorage)
+      if (!localStorage.getItem('aore_nfo_played')) {
+        
+        // Bloqueamos el scroll
+        document.body.classList.add('intro-active');
+        
+        // Dejamos que el usuario lea el ASCII durante 1.2 segundos y disparamos el láser
+        setTimeout(() => {
+          document.body.classList.add('intro-animating');
+          
+          // La animación CSS dura 2 segundos (2000ms). Tras eso, limpiamos el DOM.
+          setTimeout(() => {
+             overlay.remove();
+             document.body.classList.remove('intro-active');
+             document.body.classList.remove('intro-animating');
+             
+             // Guardamos la firma de que ya lo ha visto
+             localStorage.setItem('aore_nfo_played', 'true');
+          }, 2100);
+          
+        }, 1200); 
+        
+      } else {
+        // Si ya lo vio antes, eliminamos la capa instantáneamente sin animación
+        if (overlay) {
+          overlay.remove();
+        }
+      }
+    });
+  </script>
+</body>
+</html> 
+
 </body>
 </html>
