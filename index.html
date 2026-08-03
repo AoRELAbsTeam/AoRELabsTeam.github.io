@@ -20,16 +20,13 @@
 <body>
 
   <body>
-  <!-- ========================================== -->
-  <!-- 2K SCENE INTRO (UNIVERSE)                  -->
-  <!-- ========================================== -->
+  
   <div id="scene-intro">
     <canvas id="intro-canvas"></canvas>
     <div class="intro-text-layer">
       <div id="intro-msg" class="intro-message"></div>
     </div>
   </div>
-  <!-- ========================================== -->
 
   <div class="auth-bar">
 <a class="auth-btn auth-register" href="/register">Register</a>
@@ -184,7 +181,6 @@
       } else {
         document.body.style.overflow = 'hidden'; 
         
-        // --- 1. MOTOR 3D DE ESTRELLAS (CANVAS) ---
         const canvas = document.getElementById('intro-canvas');
         const ctx = canvas.getContext('2d');
         let w = canvas.width = window.innerWidth;
@@ -195,7 +191,7 @@
           h = canvas.height = window.innerHeight;
         });
 
-        const numStars = 400; // Cantidad de estrellas
+        const numStars = 400;
         const stars = [];
         for (let i = 0; i < numStars; i++) {
           stars.push({
@@ -207,7 +203,7 @@
 
         let animationFrame;
         function drawStars() {
-          // Fondo con motion blur
+      
           ctx.fillStyle = 'rgba(0, 0, 0, 0.2)'; 
           ctx.fillRect(0, 0, w, h);
           const cx = w / 2;
@@ -215,19 +211,18 @@
 
           for (let i = 0; i < numStars; i++) {
             const star = stars[i];
-            star.z -= 12; // Velocidad de hiperespacio
+            star.z -= 12; 
             if (star.z <= 0) {
               star.x = Math.random() * 2000 - 1000;
               star.y = Math.random() * 2000 - 1000;
               star.z = 2000;
             }
 
-            // Proyección 3D a 2D
+         
             const px = cx + (star.x / star.z) * 600;
             const py = cy + (star.y / star.z) * 600;
             const size = (1 - star.z / 2000) * 3.5;
-            
-            // Colores: blanco lejos, azul neón cerca
+          
             ctx.fillStyle = star.z < 600 ? '#7fd2ff' : '#ffffff';
             ctx.beginPath();
             ctx.arc(px, py, size, 0, Math.PI * 2);
@@ -237,7 +232,6 @@
         }
         drawStars();
 
-        // --- 2. SECUENCIA DE TEXTOS IMPACTANTES ---
         const msgEl = document.getElementById('intro-msg');
         const messages = [
           "AoRE Labs",
@@ -264,7 +258,7 @@
         
         setTimeout(showNextMessage, 500);
 
-        // --- 3. FLASHAZO FINAL Y DESTRUCCIÓN ---
+     
         setTimeout(() => {
           cancelAnimationFrame(animationFrame); 
           
