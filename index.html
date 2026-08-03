@@ -173,16 +173,17 @@
     <p>© AoRE Labs 2006-2026</p>
   </footer>
 
- <script>
+<script>
     document.addEventListener("DOMContentLoaded", () => {
       const intro = document.getElementById('scene-intro');
       if (!intro) return;
 
-      // Usamos localStorage: rápido, cero latencia y no consume cuota.
-      if (localStorage.getItem('aore_scene_played')) {
-        intro.remove(); // Si ya lo vio, fulminamos la intro instantáneamente.
+      // Usamos sessionStorage: la intro sale 1 vez por pestaña/sesión.
+      // Si cierras la web y vuelves a entrar, saldrá de nuevo.
+      if (sessionStorage.getItem('aore_scene_played')) {
+        intro.remove(); 
       } else {
-        document.body.style.overflow = 'hidden'; // Bloqueamos el scroll
+        document.body.style.overflow = 'hidden'; 
         
         const consoleEl = document.getElementById('scene-console');
         const lines = [
@@ -195,7 +196,6 @@
         
         let lineIndex = 0;
         
-        // Escribe las líneas simulando una terminal
         const printLines = setInterval(() => {
           if (lineIndex < lines.length) {
             const p = document.createElement('div');
@@ -205,23 +205,19 @@
           } else {
             clearInterval(printLines);
           }
-        }, 500); // 500ms entre línea y línea
+        }, 500); 
 
-        // Tras 3.8 segundos, metemos el flashazo blanco y quitamos la intro
         setTimeout(() => {
-          // Creamos el div del destello
           const flash = document.createElement('div');
           flash.className = 'flash-bang boom';
           document.body.appendChild(flash);
           
-          // Ocultamos la intro negra
           intro.style.display = 'none';
-          document.body.style.overflow = ''; // Devolvemos el scroll
+          document.body.style.overflow = ''; 
           
-          // Guardamos el flag para que no vuelva a salir
-          localStorage.setItem('aore_scene_played', 'true');
+          // Guardamos el flag en la sesión actual
+          sessionStorage.setItem('aore_scene_played', 'true');
           
-          // Limpiamos el flash del DOM tras la animación
           setTimeout(() => {
             flash.remove();
           }, 800);
